@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="10" height="15" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="ballTexture" tilewidth="32" tileheight="32">
+  <image source="ballTexture.png" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="3" name="mapT" tilewidth="32" tileheight="32">
+  <image source="mapT.png" width="512" height="512"/>
+ </tileset>
+ <layer name="bgLayer" width="10" height="15">
+  <data encoding="base64" compression="zlib">
+   eJzd0MsOQ1AABNCbKEXtPFp051n8//c5HyGRdHG2M5mJQggPYhKepGTkvCgoqahpePOhpaPny8DIxMzCyo+NnYPo4t6r8+7a8S//nffrC+Y=
+  </data>
+ </layer>
+ <objectgroup name="starLayer" width="10" height="15">
+  <object x="100" y="81">
+   <ellipse/>
+  </object>
+  <object x="140" y="52">
+   <ellipse/>
+  </object>
+  <object x="189" y="80">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <layer name="boxTMXlayer" width="10" height="15">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhegA+I+YFYYIDtHSh3DBYAAKHcAIg=
+  </data>
+ </layer>
+</map>
