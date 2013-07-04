@@ -266,6 +266,23 @@
 		DF0581821784FEC200190892 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = DF0581811784FEC200190892 /* cpVect.c */; };
 		DF0581891784FEC200190892 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581881784FEC200190892 /* AppDelegate.cpp */; };
 		DF05818C1784FEC200190892 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF05818B1784FEC200190892 /* HelloWorldScene.cpp */; };
+		DF0581951785002000190892 /* lv001.tmx in Resources */ = {isa = PBXBuildFile; fileRef = DF0581921785002000190892 /* lv001.tmx */; };
+		DF0581961785002000190892 /* mapT.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF0581931785002000190892 /* mapT.plist */; };
+		DF0581971785002000190892 /* mapT.png in Resources */ = {isa = PBXBuildFile; fileRef = DF0581941785002000190892 /* mapT.png */; };
+		DF05819D1785002900190892 /* ballT.png in Resources */ = {isa = PBXBuildFile; fileRef = DF0581981785002900190892 /* ballT.png */; };
+		DF05819E1785002900190892 /* ballT.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF0581991785002900190892 /* ballT.plist */; };
+		DF05819F1785002900190892 /* ballTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = DF05819A1785002900190892 /* ballTexture.png */; };
+		DF0581A01785002900190892 /* ball.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF05819B1785002900190892 /* ball.plist */; };
+		DF0581A11785002900190892 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = DF05819C1785002900190892 /* ball.png */; };
+		DF0581AE178500B000190892 /* SpriteBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581A8178500B000190892 /* SpriteBase.cpp */; };
+		DF0581AF178500B000190892 /* ObjectBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581AA178500B000190892 /* ObjectBase.cpp */; };
+		DF0581B0178500B000190892 /* Tool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581AC178500B000190892 /* Tool.cpp */; };
+		DF0581B5178500D800190892 /* Props.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581B3178500D800190892 /* Props.cpp */; };
+		DF0581B8178500E300190892 /* Favorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581B6178500E300190892 /* Favorer.cpp */; };
+		DF0581BD178500EE00190892 /* MainBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581B9178500EE00190892 /* MainBall.cpp */; };
+		DF0581BE178500EE00190892 /* SmallBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581BB178500EE00190892 /* SmallBall.cpp */; };
+		DF0581C3178500F900190892 /* SmallBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581BF178500F900190892 /* SmallBox.cpp */; };
+		DF0581C4178500F900190892 /* BoxInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581C1178500F900190892 /* BoxInfo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -832,6 +849,34 @@
 		DF0581881784FEC200190892 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		DF05818A1784FEC200190892 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		DF05818B1784FEC200190892 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		DF0581921785002000190892 /* lv001.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = lv001.tmx; sourceTree = "<group>"; };
+		DF0581931785002000190892 /* mapT.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mapT.plist; sourceTree = "<group>"; };
+		DF0581941785002000190892 /* mapT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapT.png; sourceTree = "<group>"; };
+		DF0581981785002900190892 /* ballT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballT.png; sourceTree = "<group>"; };
+		DF0581991785002900190892 /* ballT.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ballT.plist; sourceTree = "<group>"; };
+		DF05819A1785002900190892 /* ballTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballTexture.png; sourceTree = "<group>"; };
+		DF05819B1785002900190892 /* ball.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ball.plist; sourceTree = "<group>"; };
+		DF05819C1785002900190892 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		DF0581A8178500B000190892 /* SpriteBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBase.cpp; sourceTree = "<group>"; };
+		DF0581A9178500B000190892 /* SpriteBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBase.h; sourceTree = "<group>"; };
+		DF0581AA178500B000190892 /* ObjectBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectBase.cpp; sourceTree = "<group>"; };
+		DF0581AB178500B000190892 /* ObjectBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectBase.h; sourceTree = "<group>"; };
+		DF0581AC178500B000190892 /* Tool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tool.cpp; sourceTree = "<group>"; };
+		DF0581AD178500B000190892 /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
+		DF0581B1178500C100190892 /* enumWhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enumWhole.h; sourceTree = "<group>"; };
+		DF0581B2178500C700190892 /* AppMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppMacros.h; sourceTree = "<group>"; };
+		DF0581B3178500D800190892 /* Props.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Props.cpp; sourceTree = "<group>"; };
+		DF0581B4178500D800190892 /* Props.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Props.h; sourceTree = "<group>"; };
+		DF0581B6178500E300190892 /* Favorer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Favorer.cpp; sourceTree = "<group>"; };
+		DF0581B7178500E300190892 /* Favorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorer.h; sourceTree = "<group>"; };
+		DF0581B9178500EE00190892 /* MainBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainBall.cpp; sourceTree = "<group>"; };
+		DF0581BA178500EE00190892 /* MainBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainBall.h; sourceTree = "<group>"; };
+		DF0581BB178500EE00190892 /* SmallBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallBall.cpp; sourceTree = "<group>"; };
+		DF0581BC178500EE00190892 /* SmallBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallBall.h; sourceTree = "<group>"; };
+		DF0581BF178500F900190892 /* SmallBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallBox.cpp; sourceTree = "<group>"; };
+		DF0581C0178500F900190892 /* SmallBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallBox.h; sourceTree = "<group>"; };
+		DF0581C1178500F900190892 /* BoxInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxInfo.cpp; sourceTree = "<group>"; };
+		DF0581C2178500F900190892 /* BoxInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxInfo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -902,6 +947,14 @@
 		DF057E251784FEBB00190892 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DF0581981785002900190892 /* ballT.png */,
+				DF0581991785002900190892 /* ballT.plist */,
+				DF05819A1785002900190892 /* ballTexture.png */,
+				DF05819B1785002900190892 /* ball.plist */,
+				DF05819C1785002900190892 /* ball.png */,
+				DF0581921785002000190892 /* lv001.tmx */,
+				DF0581931785002000190892 /* mapT.plist */,
+				DF0581941785002000190892 /* mapT.png */,
 				DF057E261784FEBB00190892 /* CloseNormal.png */,
 				DF057E281784FEBB00190892 /* CloseSelected.png */,
 				DF057E2A1784FEBB00190892 /* Default.png */,
@@ -1980,8 +2033,76 @@
 				DF0581881784FEC200190892 /* AppDelegate.cpp */,
 				DF05818A1784FEC200190892 /* HelloWorldScene.h */,
 				DF05818B1784FEC200190892 /* HelloWorldScene.cpp */,
+				DF0581A71785009D00190892 /* 基类 */,
+				DF0581A61785009800190892 /* 增益 */,
+				DF0581A51785008F00190892 /* 基本元素 */,
+				DF0581A41785008900190892 /* 小球 */,
+				DF0581A31785008300190892 /* 方块 */,
+				DF0581A21785007B00190892 /* 特殊 */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		DF0581A21785007B00190892 /* 特殊 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "特殊";
+			sourceTree = "<group>";
+		};
+		DF0581A31785008300190892 /* 方块 */ = {
+			isa = PBXGroup;
+			children = (
+				DF0581BF178500F900190892 /* SmallBox.cpp */,
+				DF0581C0178500F900190892 /* SmallBox.h */,
+				DF0581C1178500F900190892 /* BoxInfo.cpp */,
+				DF0581C2178500F900190892 /* BoxInfo.h */,
+			);
+			name = "方块";
+			sourceTree = "<group>";
+		};
+		DF0581A41785008900190892 /* 小球 */ = {
+			isa = PBXGroup;
+			children = (
+				DF0581B9178500EE00190892 /* MainBall.cpp */,
+				DF0581BA178500EE00190892 /* MainBall.h */,
+				DF0581BB178500EE00190892 /* SmallBall.cpp */,
+				DF0581BC178500EE00190892 /* SmallBall.h */,
+			);
+			name = "小球";
+			sourceTree = "<group>";
+		};
+		DF0581A51785008F00190892 /* 基本元素 */ = {
+			isa = PBXGroup;
+			children = (
+				DF0581B6178500E300190892 /* Favorer.cpp */,
+				DF0581B7178500E300190892 /* Favorer.h */,
+			);
+			name = "基本元素";
+			sourceTree = "<group>";
+		};
+		DF0581A61785009800190892 /* 增益 */ = {
+			isa = PBXGroup;
+			children = (
+				DF0581B3178500D800190892 /* Props.cpp */,
+				DF0581B4178500D800190892 /* Props.h */,
+			);
+			name = "增益";
+			sourceTree = "<group>";
+		};
+		DF0581A71785009D00190892 /* 基类 */ = {
+			isa = PBXGroup;
+			children = (
+				DF0581A8178500B000190892 /* SpriteBase.cpp */,
+				DF0581A9178500B000190892 /* SpriteBase.h */,
+				DF0581AA178500B000190892 /* ObjectBase.cpp */,
+				DF0581AB178500B000190892 /* ObjectBase.h */,
+				DF0581AC178500B000190892 /* Tool.cpp */,
+				DF0581AD178500B000190892 /* Tool.h */,
+				DF0581B1178500C100190892 /* enumWhole.h */,
+				DF0581B2178500C700190892 /* AppMacros.h */,
+			);
+			name = "基类";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2047,6 +2168,14 @@
 				DF057E3B1784FEBB00190892 /* iTunesArtwork in Resources */,
 				DF057ED71784FEBD00190892 /* ChangeLog in Resources */,
 				DF0580411784FEC000190892 /* project.pbxproj in Resources */,
+				DF0581951785002000190892 /* lv001.tmx in Resources */,
+				DF0581961785002000190892 /* mapT.plist in Resources */,
+				DF0581971785002000190892 /* mapT.png in Resources */,
+				DF05819D1785002900190892 /* ballT.png in Resources */,
+				DF05819E1785002900190892 /* ballT.plist in Resources */,
+				DF05819F1785002900190892 /* ballTexture.png in Resources */,
+				DF0581A01785002900190892 /* ball.plist in Resources */,
+				DF0581A11785002900190892 /* ball.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2293,6 +2422,15 @@
 				DF0581821784FEC200190892 /* cpVect.c in Sources */,
 				DF0581891784FEC200190892 /* AppDelegate.cpp in Sources */,
 				DF05818C1784FEC200190892 /* HelloWorldScene.cpp in Sources */,
+				DF0581AE178500B000190892 /* SpriteBase.cpp in Sources */,
+				DF0581AF178500B000190892 /* ObjectBase.cpp in Sources */,
+				DF0581B0178500B000190892 /* Tool.cpp in Sources */,
+				DF0581B5178500D800190892 /* Props.cpp in Sources */,
+				DF0581B8178500E300190892 /* Favorer.cpp in Sources */,
+				DF0581BD178500EE00190892 /* MainBall.cpp in Sources */,
+				DF0581BE178500EE00190892 /* SmallBall.cpp in Sources */,
+				DF0581C3178500F900190892 /* SmallBox.cpp in Sources */,
+				DF0581C4178500F900190892 /* BoxInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

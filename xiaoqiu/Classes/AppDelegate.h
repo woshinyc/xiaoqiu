@@ -1,8 +1,8 @@
 //
-//  xiaoqiuAppDelegate.h
-//  xiaoqiu
+//  NycGameAppDelegate.h
+//  NycGame
 //
-//  Created by NycMac on 13-7-4.
+//  Created by NycMac on 13-6-10.
 //  Copyright __MyCompanyName__ 2013年. All rights reserved.
 //
 
