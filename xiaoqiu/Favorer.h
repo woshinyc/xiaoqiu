@@ -23,6 +23,7 @@ public:
     static Favorer *getFavorer();
     cocos2d::CCLayer *mainLayer;
     cocos2d::CCPoint targetPoint;
+    CCArray **mainAr;
     void assignmentProps(PropsType pType);
     
 };

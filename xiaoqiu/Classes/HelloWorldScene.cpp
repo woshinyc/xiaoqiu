@@ -7,6 +7,8 @@
 #include "enumWhole.h"
 #include "SmallBall.h"
 #include "StarSprite.h"
+#include "Obstacle.h"
+#include "PropsObject.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -49,16 +51,24 @@ bool HelloWorld::init()
     boxArray=CCArray::create();
     ballArray=CCArray::create();
     propsArray=CCArray::create();
+    obstacleArray=CCArray::create();
+    propsTMXArray=CCArray::create();
+    
     
     ballArray->retain();
     boxArray->retain();
     propsArray->retain();
+    obstacleArray->retain();
+    propsTMXArray->retain();
+    
     
     
    windowSize = CCDirector::sharedDirector()->getWinSize();
     _tileMap=CCTMXTiledMap::create("lv001.tmx");
     addChild(_tileMap);
     boxTMXlayer=_tileMap->layerNamed("boxTMXlayer");
+    obstaclelayer=_tileMap->layerNamed("obstaclelayer");
+    propslayer=_tileMap->layerNamed("propslayer");
 
 //    Floatingayer=_tileMap->layerNamed("Floatingayer");
 //    this->creatBox();
@@ -75,11 +85,14 @@ bool HelloWorld::init()
 
     favorer=Favorer::getFavorer();
     favorer->setPosition(ccp(windowSize.width/2, 10));
-    favorer->moveSpeed=3.0;
+    favorer->moveSpeed=6.0;
     favorer->targetPoint=favorer->getPosition();
+    favorer->mainAr=&ballArray;
     this->addChild(favorer);
     this->creatBall();
      this->getAllStar();
+    this->getAllObstacle();
+    this->getProps();
  
     //*****************************************************************************
     //                创建上方的砖块
@@ -209,7 +222,7 @@ void HelloWorld::step()
             }
                
             propSprite->isUseless=true;
-            propSprite->propsType=becomeStrong;
+            propSprite->propsType=createMother_Son;
             switch (propSprite->propsType) {
                 case createMother_Son:
                     ball->assignmentProps(createMother_Son, this);
@@ -290,9 +303,21 @@ void HelloWorld::step()
             //*****************碰撞砖块
              CCPoint nextPo=Tool::MakeOffset(ball->getPosition(), ccp(ball->speedX,ball->speedY));
             if (nextPo.y>0) {
+                
+                ////小小球检测
+//                for (int n=0; n<obstacleArray->count(); n++) {
+//                    Obstacle *ob=(Obstacle *)obstacleArray->objectAtIndex(n);
+//                    int hum=ball->smalldetectWithRect(ob->obRect);
+//                    ob->HealthNum=ob->HealthNum-hum;
+//                  
+//                }
+                
+                
                 CCPoint nextTMXPoint=this->tileCoordForPosition(nextPo);
-                int tileGid = boxTMXlayer->tileGIDAt(nextTMXPoint);
-                if (tileGid) {
+                int boxtileGid = boxTMXlayer->tileGIDAt(nextTMXPoint);
+                int obstacleGid=obstaclelayer->tileGIDAt(nextTMXPoint);
+                int propGid=propslayer->tileGIDAt(nextTMXPoint);
+                if (boxtileGid||obstacleGid) {
                     
                     int mapy= _tileMap->getMapSize().height-nextTMXPoint.y;//从左下算起的点Y
                     float x=(nextTMXPoint.x+0.5)*_tileMap->getTileSize().width;
@@ -322,9 +347,49 @@ void HelloWorld::step()
                         ball->speedX=fabsf(ball->speedX);
                         CCLog("右边缘");
                     }
+                    if (obstacleGid) {
+                        //如果为可摧毁的障碍物
+                        if (obstacleArray!=NULL&&obstacleArray->count()>0) {
+                            for (int n=0; n<obstacleArray->count(); n++) {
+                                Obstacle *thisOb=(Obstacle*)obstacleArray->objectAtIndex(n);
+                                if (thisOb->position.equals(nextTMXPoint)) {
+                                    thisOb->HealthNum=thisOb->HealthNum-ball->harmNum;
+                                    CCLog("hp=%i",thisOb->HealthNum);
+                                    break;
+                                }
+                            }
+                        }
                         
+                        
+                    }
                     
             }
+                else if (propGid)
+                {
+                    if (propsTMXArray!=NULL&&propsTMXArray->count()>0) {
+                        for (int n=0; n<propsTMXArray->count(); n++) {
+                            PropsObject *thisPo=(PropsObject*)propsTMXArray->objectAtIndex(n);
+                            if (thisPo->position.equals(nextTMXPoint)) {
+                                
+                                thisPo->HealthNum=thisPo->HealthNum-10;
+//                                Props *pro=Props::getProps(thisPo->propsType);
+//                                if (propsArray==NULL) {
+//                                    propsArray=CCArray::create();
+//                                    propsArray->retain();
+//                                }
+//                                propsArray->addObject(pro);
+                                int mapy= _tileMap->getMapSize().height-nextTMXPoint.y;//从左下算起的点Y
+                                float x=(nextTMXPoint.x+0.5)*_tileMap->getTileSize().width;
+                                float y=(mapy-0.5)*_tileMap->getTileSize().height;
+                                
+                                CCPoint boxPo=ccp(x,y);
+                                this->creatProps(thisPo->propsType, boxPo);
+        
+                                break;
+                            }
+                        }
+                    }
+                }
  
             }
             //*****************碰撞砖块
@@ -381,6 +446,22 @@ void HelloWorld::step()
         if (star->isUseless) {
             star->removeFromParent();
             starArray->removeObject(star);
+        }
+    }
+    int obstacleNum=obstacleArray->count();
+    for (int n=obstacleNum-1; n>0; n--) {
+        Obstacle *thisOb=(Obstacle*)obstacleArray->objectAtIndex(n);
+        if (thisOb->HealthNum<=0) {
+            obstaclelayer->removeTileAt(thisOb->position);
+            obstacleArray->removeObject(thisOb);
+        }
+    }
+    int propsTMXNum=propsTMXArray->count();
+    for (int n=propsTMXNum-1; n>0; n--) {
+        PropsObject *thisOb=(PropsObject*)propsTMXArray->objectAtIndex(n);
+        if (thisOb->HealthNum<=0) {
+            propslayer->removeTileAt(thisOb->position);
+            propsTMXArray->removeObject(thisOb);
         }
     }
 }
@@ -514,3 +595,132 @@ void HelloWorld::getAllStar()
     }
     
 }
+#pragma mark - 得到障碍
+void HelloWorld::getAllObstacle()
+{
+    if (_tileMap==NULL) {
+        return;
+    }
+    CCSize s=obstaclelayer->getLayerSize();
+    for (int x = 0; x<s.width; x++) {
+        for (int y =0; y<s.height; y++) {
+            int gid=obstaclelayer->tileGIDAt(ccp(x, y));
+            if (gid !=0) {
+                
+                
+                
+   
+                
+                
+                
+                
+                Obstacle *ob=new Obstacle;
+                ob->position=ccp(x, y);
+                int mapy= _tileMap->getMapSize().height-y;//从左下算起的点Y
+                float x=(x+0.5)*_tileMap->getTileSize().width;
+                float y=(mapy-0.5)*_tileMap->getTileSize().height;
+                
+                CCPoint boxPo=ccp(x,y);
+                CCRect zeroBoxRect=CCRect(0, 0, _tileMap->getTileSize().width*0.5, _tileMap->getTileSize().height*0.5);//获得原始BoxRect
+                CCRect boxRect=Tool::MakeOffset(boxPo, zeroBoxRect);//获取真正的BoxRect
+                ob->obRect=boxRect;
+                ob->startGID =gid;
+                CCDictionary *properties=_tileMap->propertiesForGID(gid);
+                if (properties) {
+                    ob->infoDic=properties;
+                    if (properties->valueForKey("hp")) {
+                        CCString *hp=(CCString *)properties->valueForKey("hp");
+                        ob->HealthNum=hp->intValue();
+                        
+                    }
+                }
+                if (ob->HealthNum==0) {
+                    ob->HealthNum=5;
+                }
+                obstacleArray->addObject(ob);
+                
+            }
+        }
+    }
+}
+
+#pragma mark -获得道具
+ void HelloWorld::getProps()
+{
+    if (_tileMap==NULL) {
+        return;
+    }
+    CCSize s=propslayer->getLayerSize();
+    for (int x = 0; x<s.width; x++) {
+        for (int y =0; y<s.height; y++) {
+            int gid=propslayer->tileGIDAt(ccp(x, y));
+            if (gid !=0) {
+                
+                PropsObject *ob=new PropsObject;
+                ob->position=ccp(x, y);
+                ob->startGID =gid;
+                CCDictionary *properties=_tileMap->propertiesForGID(gid);
+                int typeNum=-1;
+                if (properties) {
+                    ob->infoDic=properties;
+                    if (properties->valueForKey("hp")) {
+                        CCString *hp=(CCString *)properties->valueForKey("hp");
+                        ob->HealthNum=hp->intValue();
+                        
+                    }
+                    
+                    if (properties->valueForKey("type")) {
+                        
+                        CCString *type=(CCString *)properties->valueForKey("type");
+                        typeNum=type->intValue();
+
+                    }
+                    
+                    
+                }
+                if (typeNum==-1) {
+            
+                        typeNum=random_propsType;
+
+                    switch (typeNum) {
+                        case 0:
+                            ob->propsType=createMother_Son ;
+                            break;
+                        case 1:
+                            ob->propsType=createBrothers ;
+                            break;
+                        case 2:
+                            ob->propsType=becomeSmall ;
+                            break;
+                        case 3:
+                            ob->propsType=becomeStrong ;
+                            break;
+                        case 4:
+                            ob->propsType=becomeFireBall ;
+                            break;
+                        case 5:
+                            ob->propsType=ball_Speed_up ;
+                            break;
+                        case 6:
+                            ob->propsType=gongzih_Speed_up ;
+                            break;
+                        case 7:
+                            ob->propsType=gongzih_Speed_down ;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (ob->HealthNum==0) {
+                    ob->HealthNum=1;
+                }
+                propsTMXArray->addObject(ob);
+                
+            }
+        }
+    }
+
+
+}
+
+

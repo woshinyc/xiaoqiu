@@ -283,6 +283,10 @@
 		DF0581BE178500EE00190892 /* SmallBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581BB178500EE00190892 /* SmallBall.cpp */; };
 		DF0581C3178500F900190892 /* SmallBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581BF178500F900190892 /* SmallBox.cpp */; };
 		DF0581C4178500F900190892 /* BoxInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581C1178500F900190892 /* BoxInfo.cpp */; };
+		DF0581C71785015100190892 /* StarSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581C51785015100190892 /* StarSprite.cpp */; };
+		DF0581CA17850D8E00190892 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581C817850D8E00190892 /* Obstacle.cpp */; };
+		DFCDA81117854ED100CD29D8 /* PropsObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFCDA80F17854ED100CD29D8 /* PropsObject.cpp */; };
+		DFCDA813178567B400CD29D8 /* fire-grayscale.png in Resources */ = {isa = PBXBuildFile; fileRef = DFCDA812178567B400CD29D8 /* fire-grayscale.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -877,6 +881,13 @@
 		DF0581C0178500F900190892 /* SmallBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallBox.h; sourceTree = "<group>"; };
 		DF0581C1178500F900190892 /* BoxInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxInfo.cpp; sourceTree = "<group>"; };
 		DF0581C2178500F900190892 /* BoxInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxInfo.h; sourceTree = "<group>"; };
+		DF0581C51785015100190892 /* StarSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StarSprite.cpp; sourceTree = "<group>"; };
+		DF0581C61785015100190892 /* StarSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarSprite.h; sourceTree = "<group>"; };
+		DF0581C817850D8E00190892 /* Obstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
+		DF0581C917850D8E00190892 /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
+		DFCDA80F17854ED100CD29D8 /* PropsObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PropsObject.cpp; sourceTree = "<group>"; };
+		DFCDA81017854ED100CD29D8 /* PropsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropsObject.h; sourceTree = "<group>"; };
+		DFCDA812178567B400CD29D8 /* fire-grayscale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fire-grayscale.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -947,6 +958,7 @@
 		DF057E251784FEBB00190892 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DFCDA812178567B400CD29D8 /* fire-grayscale.png */,
 				DF0581981785002900190892 /* ballT.png */,
 				DF0581991785002900190892 /* ballT.plist */,
 				DF05819A1785002900190892 /* ballTexture.png */,
@@ -2046,6 +2058,8 @@
 		DF0581A21785007B00190892 /* 特殊 */ = {
 			isa = PBXGroup;
 			children = (
+				DF0581C51785015100190892 /* StarSprite.cpp */,
+				DF0581C61785015100190892 /* StarSprite.h */,
 			);
 			name = "特殊";
 			sourceTree = "<group>";
@@ -2077,6 +2091,8 @@
 			children = (
 				DF0581B6178500E300190892 /* Favorer.cpp */,
 				DF0581B7178500E300190892 /* Favorer.h */,
+				DF0581C817850D8E00190892 /* Obstacle.cpp */,
+				DF0581C917850D8E00190892 /* Obstacle.h */,
 			);
 			name = "基本元素";
 			sourceTree = "<group>";
@@ -2086,6 +2102,8 @@
 			children = (
 				DF0581B3178500D800190892 /* Props.cpp */,
 				DF0581B4178500D800190892 /* Props.h */,
+				DFCDA80F17854ED100CD29D8 /* PropsObject.cpp */,
+				DFCDA81017854ED100CD29D8 /* PropsObject.h */,
 			);
 			name = "增益";
 			sourceTree = "<group>";
@@ -2176,6 +2194,7 @@
 				DF05819F1785002900190892 /* ballTexture.png in Resources */,
 				DF0581A01785002900190892 /* ball.plist in Resources */,
 				DF0581A11785002900190892 /* ball.png in Resources */,
+				DFCDA813178567B400CD29D8 /* fire-grayscale.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2431,6 +2450,9 @@
 				DF0581BE178500EE00190892 /* SmallBall.cpp in Sources */,
 				DF0581C3178500F900190892 /* SmallBox.cpp in Sources */,
 				DF0581C4178500F900190892 /* BoxInfo.cpp in Sources */,
+				DF0581C71785015100190892 /* StarSprite.cpp in Sources */,
+				DF0581CA17850D8E00190892 /* Obstacle.cpp in Sources */,
+				DFCDA81117854ED100CD29D8 /* PropsObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2509,6 +2531,7 @@
 				GCC_PREFIX_HEADER = xiaoqiu/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = xiaoqiu/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/xiaoqiu/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2533,6 +2556,7 @@
 				GCC_PREFIX_HEADER = xiaoqiu/Prefix.pch;
 				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
 				INFOPLIST_FILE = xiaoqiu/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/xiaoqiu/libs/cocos2dx/platform/third_party/ios/libraries\"",
@@ -2568,6 +2592,7 @@
 				DF0581911784FEC200190892 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

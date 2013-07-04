@@ -28,16 +28,15 @@ MainBall* MainBall::getBall()
 {
     MainBall *ball=MainBall::create();
     ball->harmNum=4;
-//
+
    ball->initWithSpriteFrameName("ball.png");
-//    ball->ballAmother_son();
-//   CCParticleSun* m_emitter = CCParticleSun::createWithTotalParticles(60);
-//    m_emitter->setPosition(ccp(ball->getContentSize().width/2, ball->getContentSize().height/2));
-//    m_emitter->retain();
-//    ball-> addChild(m_emitter);
-//    m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("fire-grayscale.png") );
-//    m_emitter->setVisible(false);
-//    ball->m_emitter=m_emitter;
+   CCParticleSun* m_emitter = CCParticleSun::createWithTotalParticles(60);
+    m_emitter->setPosition(ccp(ball->getContentSize().width/2, ball->getContentSize().height/2));
+    m_emitter->retain();
+    ball-> addChild(m_emitter);
+    m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("fire-grayscale.png") );
+    m_emitter->setVisible(false);
+    ball->m_emitter=m_emitter;
     return ball;
 }
 /////
@@ -112,8 +111,14 @@ void MainBall::ballAmother_son()   //子母球
 {
 this->bType=createMother_Son||bType;
     SmallBall *smallBall=SmallBall::getSmallBall();
-    smallBall->speed=3;
-    smallBall->radian=2;
+    
+    smallBall->speed=-smallSpeed;
+    if (zhengfu==0) {
+        smallBall->radian=smallSpeed;
+    }else{
+        smallBall->radian=-smallSpeed;
+    }
+    
     smallBall->setPosition(ccp(30, 30));
     smallBall->setScale(0.5);
     this->addChild(smallBall);
@@ -153,7 +158,10 @@ void MainBall::ballAstrong()     //变成铅球
 void MainBall::ballAfireball()   //变成火球
 {
     this->bType=becomeFireBall||bType;
-    m_emitter->setVisible(true);
+    if (m_emitter!=NULL) {
+         m_emitter->setVisible(true);
+    }
+   
 }
 void MainBall::ballAspeed_up()   //速度提升
 {
@@ -170,20 +178,47 @@ int MainBall::detectWithRect(CCRect targetRect,bool* collisionBool)
         *collisionBool=true;
         harm=harm+this->harmNum;
     }
+   harm+= this->smalldetectWithRect(targetRect);
+    
+//    int smallBallNum=smallBallList->count();
+//    SmallBall *ball;
+//    CCRect smallRect;
+//    for (int n=0; n<smallBallNum; n++) {
+//      ball =(SmallBall *)smallBallList->objectAtIndex(n);
+//
+//        
+//        smallRect=ball->getRectangle();
+//        smallRect=Tool::MakeOffset(this->convertToWorldSpace(ball->getPosition()), smallRect);//计算小小球在屏幕上的位置
+//        if (smallRect.intersectsRect(targetRect)) {
+//            harm=harm+this->harmNum;
+//        }
+//    }
+    
+    
+    return harm;
+}
+
+#pragma mark -小小球自检测
+int MainBall::smalldetectWithRect(CCRect targetRect)
+{
+    int harm=0;
+ 
     int smallBallNum=smallBallList->count();
     SmallBall *ball;
     CCRect smallRect;
     for (int n=0; n<smallBallNum; n++) {
-      ball =(SmallBall *)smallBallList->objectAtIndex(n);
-
+        ball =(SmallBall *)smallBallList->objectAtIndex(n);
+        
         
         smallRect=ball->getRectangle();
         smallRect=Tool::MakeOffset(this->convertToWorldSpace(ball->getPosition()), smallRect);//计算小小球在屏幕上的位置
         if (smallRect.intersectsRect(targetRect)) {
-            harm=harm+this->harmNum;
+            harm=harm+ball->harmNum;
         }
     }
     
     
     return harm;
 }
+
+

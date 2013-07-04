@@ -7,6 +7,7 @@
 //
 
 #include "Favorer.h"
+#include "MainBall.h"
 #define MAXSpeed 10
 #define MINSpeed 1
 using namespace cocos2d;
@@ -23,7 +24,7 @@ void Favorer::step()
     if (&targetPoint!=NULL) {
         if (fabsf(this->getPositionX()-targetPoint.x)<moveSpeed) {
             this->setPositionX(targetPoint.x);
-            //this->setPosition(ccp(targetPoint.x, 10));
+          
         }else
         {
             if (this->getPositionX()>targetPoint.x) {
@@ -33,14 +34,28 @@ void Favorer::step()
             }
         }
      
-        
+        CCArray *arr=*mainAr;
+        if (arr!=NULL&&arr->count()>0) {
+            for (int n=0; n<arr->count(); n++) {
+                MainBall *bal=(MainBall *)arr->objectAtIndex(n);
+                if (bal->isFire==false) {
+                    bal->setPositionX(this->getPositionX());
+                }
+                
+            }
+        }
     }
 
 }
 Favorer *Favorer::getFavorer()
 {
     Favorer *favorer = Favorer::create();
-    favorer->initWithFile("favorerImg.jpg", CCRectMake(0, 0, 100, 15));
+    
+     CCSpriteFrame *pFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("favorerImg.jpg");
+    CCTexture2D *pNewTexture =pFrame->getTexture();
+    CCRect rect=CCRect(pFrame->getRect().origin.x, pFrame->getRect().origin.y, 100, 15);
+    favorer->initWithTexture(pNewTexture, rect);
+ 
     return favorer;
 
 }

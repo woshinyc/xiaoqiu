@@ -16,6 +16,8 @@
 #define PropSpeed   5
 #define createProps  arc4random()%2
 #define random_propsType    arc4random()%8
+#define smallSpeed  arc4random()%3+1
+#define zhengfu   arc4random()%2
 typedef enum
 {
     createMother_Son         =1<< 0,          //创建子母球

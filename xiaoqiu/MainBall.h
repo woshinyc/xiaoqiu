@@ -41,6 +41,7 @@ public:
     void ballAspeed_up();
     //***********
     void sportSmallBall();
+    int smalldetectWithRect(CCRect targetRect);
      int detectWithRect(CCRect targetRect,bool* collisionBool);
     //**********
      void MainBallstep();

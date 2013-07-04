@@ -24,13 +24,16 @@ public:
     void creatBall();
     void step();
     void test();
-    
+    void getAllObstacle();
     void getAllStar();
+    void getProps();
 
     void creatBox();
     CCTMXTiledMap* _tileMap;
     CCTMXLayer *boxTMXlayer;
     CCTMXLayer *Floatingayer;
+    CCTMXLayer *obstaclelayer;
+    CCTMXLayer *propslayer;
 
     cocos2d::CCSize windowSize;
     Favorer *favorer;
@@ -38,6 +41,8 @@ public:
     cocos2d::CCArray *ballArray;
     cocos2d::CCArray *propsArray;
     cocos2d::CCArray *starArray;
+    cocos2d::CCArray *obstacleArray;
+    cocos2d::CCArray *propsTMXArray;
     cocos2d::CCPoint beganTouchLocation;
     
 
