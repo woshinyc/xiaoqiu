@@ -28,7 +28,7 @@ MainBall* MainBall::getBall()
 {
     MainBall *ball=MainBall::create();
     ball->harmNum=4;
-
+    ball->ballAmother_son();
    ball->initWithSpriteFrameName("ball.png");
    CCParticleSun* m_emitter = CCParticleSun::createWithTotalParticles(60);
     m_emitter->setPosition(ccp(ball->getContentSize().width/2, ball->getContentSize().height/2));

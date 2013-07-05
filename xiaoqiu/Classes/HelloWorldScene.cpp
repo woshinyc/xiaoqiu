@@ -305,12 +305,12 @@ void HelloWorld::step()
             if (nextPo.y>0) {
                 
                 ////小小球检测
-//                for (int n=0; n<obstacleArray->count(); n++) {
-//                    Obstacle *ob=(Obstacle *)obstacleArray->objectAtIndex(n);
-//                    int hum=ball->smalldetectWithRect(ob->obRect);
-//                    ob->HealthNum=ob->HealthNum-hum;
-//                  
-//                }
+                for (int n=0; n<obstacleArray->count(); n++) {
+                    Obstacle *ob=(Obstacle *)obstacleArray->objectAtIndex(n);
+                    int hum=ball->smalldetectWithRect(ob->obRect);
+                    ob->HealthNum=ob->HealthNum-hum;
+                  
+                }
                 
                 
                 CCPoint nextTMXPoint=this->tileCoordForPosition(nextPo);
@@ -449,7 +449,7 @@ void HelloWorld::step()
         }
     }
     int obstacleNum=obstacleArray->count();
-    for (int n=obstacleNum-1; n>0; n--) {
+    for (int n=obstacleNum-1; n>=0; n--) {
         Obstacle *thisOb=(Obstacle*)obstacleArray->objectAtIndex(n);
         if (thisOb->HealthNum<=0) {
             obstaclelayer->removeTileAt(thisOb->position);
@@ -457,7 +457,7 @@ void HelloWorld::step()
         }
     }
     int propsTMXNum=propsTMXArray->count();
-    for (int n=propsTMXNum-1; n>0; n--) {
+    for (int n=propsTMXNum-1; n>=0; n--) {
         PropsObject *thisOb=(PropsObject*)propsTMXArray->objectAtIndex(n);
         if (thisOb->HealthNum<=0) {
             propslayer->removeTileAt(thisOb->position);
@@ -602,6 +602,7 @@ void HelloWorld::getAllObstacle()
         return;
     }
     CCSize s=obstaclelayer->getLayerSize();
+   CCRect zeroBoxRect=CCRect(0, 0, _tileMap->getTileSize().width*0.5, _tileMap->getTileSize().height*0.5);//获得原始BoxRect
     for (int x = 0; x<s.width; x++) {
         for (int y =0; y<s.height; y++) {
             int gid=obstaclelayer->tileGIDAt(ccp(x, y));
@@ -617,13 +618,14 @@ void HelloWorld::getAllObstacle()
                 Obstacle *ob=new Obstacle;
                 ob->position=ccp(x, y);
                 int mapy= _tileMap->getMapSize().height-y;//从左下算起的点Y
-                float x=(x+0.5)*_tileMap->getTileSize().width;
-                float y=(mapy-0.5)*_tileMap->getTileSize().height;
+                float xxx=(x+0.5)*_tileMap->getTileSize().width;
+                float yyy=(mapy-0.5)*_tileMap->getTileSize().height;
                 
-                CCPoint boxPo=ccp(x,y);
-                CCRect zeroBoxRect=CCRect(0, 0, _tileMap->getTileSize().width*0.5, _tileMap->getTileSize().height*0.5);//获得原始BoxRect
+                CCPoint boxPo=ccp(xxx,yyy);
+               // CCLog("x=%f");
                 CCRect boxRect=Tool::MakeOffset(boxPo, zeroBoxRect);//获取真正的BoxRect
                 ob->obRect=boxRect;
+               // CCLog("ob->obRect.x=%f y = %f  w=%f h=%f",ob->obRect.origin.x,ob->obRect.origin.y,ob->obRect.size.width,ob->obRect.size.height);
                 ob->startGID =gid;
                 CCDictionary *properties=_tileMap->propertiesForGID(gid);
                 if (properties) {
