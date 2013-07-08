@@ -29,7 +29,7 @@
  </layer>
  <layer name="propslayer" width="10" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBicgHGA7IThgXIDujuw4aEAAA7cAA4=
+   eJxjYBicgHGA7IThgXIDujuwYVLVYVOLLE6sO0gBABYkAB8=
   </data>
  </layer>
  <layer name="obstaclelayer" width="10" height="15">

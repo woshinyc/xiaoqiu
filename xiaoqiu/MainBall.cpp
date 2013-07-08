@@ -74,6 +74,14 @@ void MainBall::ballAbrothers(CCNode *mainLayer)    //创建小球
         
         lay->ballArray->addObject(ball);
         lay->addChild(ball);
+        CCParticleSun* m_emitter = CCParticleSun::createWithTotalParticles(60);
+        m_emitter->setPosition(this->getPosition());
+        m_emitter->retain();
+        
+        m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("fire-grayscale.png") );
+        m_emitter->cocos2d::CCParticleSystem::setTotalParticles(0);
+        ball->m_emitter=m_emitter;
+        mainLayer-> addChild(m_emitter);
     }
   
     

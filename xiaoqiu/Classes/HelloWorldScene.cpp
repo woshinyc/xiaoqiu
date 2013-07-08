@@ -143,8 +143,6 @@ void HelloWorld::step()
         if (propSprite->isUseless==false&&favorerRect.intersectsRect(propSprite->getRectangle()))
         {
             MainBall *ball;
-         
-            propSprite->propsType=becomeFireBall;
             propSprite->isUseless=true;
             switch (propSprite->propsType) {
                 case createBrothers:
@@ -218,7 +216,7 @@ void HelloWorld::step()
         {
             ball->setPositionX(ball->getPosition().x+ball->speedX);
             ball->setPositionY(ball->getPosition().y+ball->speedY);
-            ball->m_emitter->setPosition(ball->getPosition());
+            ball->m_emitter->setPosition(ccp(ball->getPosition().x, ball->getPosition().y));
             if (ball->getPositionY()<0) {
                 ball->isUseless=true;
                 
