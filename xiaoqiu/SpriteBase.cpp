@@ -45,3 +45,11 @@ void SpriteBase::beAttack(int num)
 {
     this->setHealthNum(healthNum-num);
 }
+
+void SpriteBase::setSpeedAndRadian(float _speed,float _radian)
+{
+    radian=_radian;
+    speedX=_speed *cosf(_radian);
+    speedY=_speed *sinf(_radian);
+    
+}

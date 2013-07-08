@@ -15,12 +15,12 @@
 #define BallSpeed   5
 #define PropSpeed   5
 #define createProps  arc4random()%2
-#define random_propsType    arc4random()%8
+#define random_propsType    arc4random()%7+1
 #define smallSpeed  arc4random()%3+1
 #define zhengfu   arc4random()%2
 typedef enum
 {
-    createMother_Son         =1<< 0,          //创建子母球
+
     createBrothers           =1<< 1,          //创建另外两个球
     becomeSmall              =1<< 2,          //变小球
     becomeStrong             =1<< 3,          //变铅球
@@ -39,7 +39,6 @@ typedef enum
 
 typedef enum 
 {
-    ball_Mother_Son_Type       =1<<0,
     ball_small_Type            =1<<1,
     ball_strong_Type           =1<<2,
     ball_fire_Type             =1<<3,

@@ -19,15 +19,18 @@ public:
     virtual bool init();
     CREATE_FUNC(SpriteBase);
     int harmNum;            //伤害力
-   
+    float speedX,speedY;
+    float speed,radian;
     bool isUseless;         //无用 。删除用
     void setHealthNum(int num);
     int  getHealthNum();
     void beAttack(int num); //遭受攻击
       CCPoint getCenterPoint(); // 获得中心点
      cocos2d::CCRect getRectangle();
+      void setSpeedAndRadian(float _speed,float _radian);
 private:
      int healthNum;          //生命值
+  
   
   
 };

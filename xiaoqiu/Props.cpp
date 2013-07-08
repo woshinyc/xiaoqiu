@@ -23,11 +23,6 @@ Props *Props::getProps(PropsType type)
     ccColor3B color;
     const char *string;
     switch (type) {
-        case createMother_Son:
-            string="Icon-Small.png";
-            //color=ccc3(1, 1, 1);
-            color=ccWHITE;
-            break;
         case createBrothers:
             string="Icon-Small.png";
              color=ccYELLOW;

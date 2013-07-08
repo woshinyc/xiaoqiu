@@ -5,7 +5,6 @@
 #include "Tool.h"
 
 #include "enumWhole.h"
-#include "SmallBall.h"
 #include "StarSprite.h"
 #include "Obstacle.h"
 #include "PropsObject.h"
@@ -95,78 +94,6 @@ bool HelloWorld::init()
     this->getProps();
  
     //*****************************************************************************
-    //                创建上方的砖块
-    //*****************************************************************
-//    for (int h=0; h<3; h++)
-//    {
-//        for (int n=0; n<10; n++)
-//        {
-//            BoxInfo *boxInfo;
-//            SmallBox*box;
-//            boxInfo=new BoxInfo;
-//            
-//            int num=randomBoxtype;
-//            num=0;
-//            if (createProps==1) {
-//                boxInfo->isProps=true;
-//                int random_num=random_propsType;
-//                switch (random_num) {
-//                    case 0:
-//                       boxInfo->pType=createMother_Son ;
-//                        break;
-//                    case 1:
-//                        boxInfo->pType=createBrothers ;
-//                        break;
-//                    case 2:
-//                        boxInfo->pType=becomeSmall ;
-//                        break;
-//                    case 3:
-//                        boxInfo->pType=becomeStrong ;
-//                        break;
-//                    case 4:
-//                        boxInfo->pType=becomeFireBall ;
-//                        break;
-//                    case 5:
-//                        boxInfo->pType=ball_Speed_up ;
-//                        break;
-//                    case 6:
-//                        boxInfo->pType=gongzih_Speed_up ;
-//                        break;
-//                    case 7:
-//                        boxInfo->pType=gongzih_Speed_down ;
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//            switch (num)
-//            {
-//                case 0:
-//                    boxInfo->boxType=commonBox;
-//                    break;
-//                case 1:
-//                    boxInfo->boxType=woodBox;
-//                    break;
-//                case 2:
-//                    boxInfo->boxType=ironBox;
-//                    break;
-//                default:
-//                    break;
-//            }
-//            
-//            box=SmallBox::getBox(boxInfo,CCSizeMake(windowSize.width / 10, windowSize.width/10));
-//            if (boxInfo->isProps) {
-//                 box->setColor(ccGREEN);
-//            }
-//            box->setPosition(ccp(windowSize.width / 10*(n+0.5), windowSize.height - windowSize.width/20-30*h));
-//            box->boxRect=box->getRectangle(box->getPosition());
-//            box->info=boxInfo;
-//            boxArray->addObject(box);
-//          //  this->addChild(box);
-//        }
-//    }
-//    
-    //*****************************************************************************
     //                启动计时器
     //*****************************************************************
     this->schedule(schedule_selector(HelloWorld::step), 1/60);
@@ -216,31 +143,61 @@ void HelloWorld::step()
         if (propSprite->isUseless==false&&favorerRect.intersectsRect(propSprite->getRectangle()))
         {
             MainBall *ball;
-            if(ballArray->count()>0)
-            {
-                ball =(MainBall *)ballArray->objectAtIndex(0);
-            }
-               
+         
+            propSprite->propsType=becomeFireBall;
             propSprite->isUseless=true;
-            propSprite->propsType=createMother_Son;
             switch (propSprite->propsType) {
-                case createMother_Son:
-                    ball->assignmentProps(createMother_Son, this);
-                    break;
                 case createBrothers:
+                    if(ballArray->count()>0)
+                    {
+                        ball =(MainBall *)ballArray->objectAtIndex(0);
+                    }
                     ball->assignmentProps(createBrothers, this);
                     break;
                 case becomeSmall:
-                     ball->assignmentProps(becomeSmall, this);
+                    if(ballArray->count()>0)
+                    {
+                        for (int n=0; n<ballArray->count(); n++) {
+                            ball =(MainBall *)ballArray->objectAtIndex(n);
+                            ball->assignmentProps(becomeSmall, this);
+                        }
+                     
+                    }
+                    
                     break;
                 case becomeStrong:
-                     ball->assignmentProps(becomeStrong, this);
+                    
+                    if(ballArray->count()>0)
+                    {
+                        for (int n=0; n<ballArray->count(); n++) {
+                            ball =(MainBall *)ballArray->objectAtIndex(n);
+                            ball->assignmentProps(becomeStrong, this);
+                        }
+                        
+                    }
+                    
                     break;
                 case becomeFireBall:
-                     ball->assignmentProps(becomeFireBall, this);
+                    if(ballArray->count()>0)
+                    {
+                        for (int n=0; n<ballArray->count(); n++) {
+                            ball =(MainBall *)ballArray->objectAtIndex(n);
+                           ball->assignmentProps(becomeFireBall, this);
+                        }
+                        
+                    }
+                     
                     break;
                 case ball_Speed_up:
-                     ball->assignmentProps(ball_Speed_up, this);
+                    if(ballArray->count()>0)
+                    {
+                        for (int n=0; n<ballArray->count(); n++) {
+                            ball =(MainBall *)ballArray->objectAtIndex(n);
+                            ball->assignmentProps(ball_Speed_up, this);
+                        }
+                        
+                    }
+                    
                     break;
                 case gongzih_Speed_up:
                     favorer->assignmentProps(gongzih_Speed_up);
@@ -261,11 +218,11 @@ void HelloWorld::step()
         {
             ball->setPositionX(ball->getPosition().x+ball->speedX);
             ball->setPositionY(ball->getPosition().y+ball->speedY);
+            ball->m_emitter->setPosition(ball->getPosition());
             if (ball->getPositionY()<0) {
                 ball->isUseless=true;
                 
             }
-            
             //*****************得到碰撞点
             CCSize spriteSize=ball->getContentSize();
 
@@ -292,27 +249,15 @@ void HelloWorld::step()
                 CCPoint touchPointInFavorer=favorer->convertToNodeSpace(downPoint);
                // float radianCoefficient=favorer->getContentSize().width/2-touchPointInFavorer.x;
                 float radianCoefficient=favorer->getContentSize().width-touchPointInFavorer.x;
-                CCLog("radianCoefficient=%f",radianCoefficient);
                 radianCoefficient=radianCoefficient/favorer->getContentSize().width;
-                
                 float speedRadian=(radianCoefficient*2/3.0+1/6.0)*M_PI ;
-                ball->setSpeedAndRadian(speedRadian);
+                ball->setSpeedAndRadian(ball->speed,speedRadian);
               
             }
             //*****************碰撞墙壁
             //*****************碰撞砖块
              CCPoint nextPo=Tool::MakeOffset(ball->getPosition(), ccp(ball->speedX,ball->speedY));
             if (nextPo.y>0) {
-                
-                ////小小球检测
-                for (int n=0; n<obstacleArray->count(); n++) {
-                    Obstacle *ob=(Obstacle *)obstacleArray->objectAtIndex(n);
-                    int hum=ball->smalldetectWithRect(ob->obRect);
-                    ob->HealthNum=ob->HealthNum-hum;
-                  
-                }
-                
-                
                 CCPoint nextTMXPoint=this->tileCoordForPosition(nextPo);
                 int boxtileGid = boxTMXlayer->tileGIDAt(nextTMXPoint);
                 int obstacleGid=obstaclelayer->tileGIDAt(nextTMXPoint);
@@ -332,19 +277,19 @@ void HelloWorld::step()
                     
                     if (radian>=M_PI_4&&radian<M_PI_2+M_PI_4) {
                     //上边缘
-                        ball->speedY=fabsf(ball->speedY);
-                        CCLog("上边缘测试测试");
+                        ball->speedY=fabsf(ball->speedY*1.01);
+                        CCLog("上边缘");
                     }else if (radian>=M_PI_2+M_PI_4&&radian<M_PI+M_PI_4){
                     //左边缘
-                         ball->speedX=-fabsf(ball->speedX);
+                         ball->speedX=-fabsf(ball->speedX*1.01);
                         CCLog("左边缘");
                     }else if (radian>=M_PI+M_PI_4&&radian<(2*M_PI-M_PI_4)) {
                     //下边缘
-                        ball->speedY=-fabsf(ball->speedY);
+                        ball->speedY=-fabsf(ball->speedY*1.01);
                         CCLog("下边缘");
                     }else{
                     //右边缘
-                        ball->speedX=fabsf(ball->speedX);
+                        ball->speedX=fabsf(ball->speedX*1.01);
                         CCLog("右边缘");
                     }
                     if (obstacleGid) {
@@ -359,8 +304,6 @@ void HelloWorld::step()
                                 }
                             }
                         }
-                        
-                        
                     }
                     
             }
@@ -372,12 +315,6 @@ void HelloWorld::step()
                             if (thisPo->position.equals(nextTMXPoint)) {
                                 
                                 thisPo->HealthNum=thisPo->HealthNum-10;
-//                                Props *pro=Props::getProps(thisPo->propsType);
-//                                if (propsArray==NULL) {
-//                                    propsArray=CCArray::create();
-//                                    propsArray->retain();
-//                                }
-//                                propsArray->addObject(pro);
                                 int mapy= _tileMap->getMapSize().height-nextTMXPoint.y;//从左下算起的点Y
                                 float x=(nextTMXPoint.x+0.5)*_tileMap->getTileSize().width;
                                 float y=(mapy-0.5)*_tileMap->getTileSize().height;
@@ -393,18 +330,6 @@ void HelloWorld::step()
  
             }
             //*****************碰撞砖块
-            
-//            //*****************障碍物处理
-//            CCPoint upTMXPoint=this->tileCoordForPosition(upPoint);
-//            CCPoint downTMXPoint=this->tileCoordForPosition(downPoint);
-//            CCPoint leftTMXPoint=this->tileCoordForPosition(leftPoint);
-//            CCPoint rightTMXPoint=this->tileCoordForPosition(rightPoint);
-//            int tileGid = TMXlayer->tileGIDAt(upTMXPoint);
-//            if (tileGid) {
-//                CCDictionary *properties=_tileMap->propertiesForGID(tileGid);
-//                if (properties) {
-//            
-//            //*****************障碍物处理
             
            //*****************星星处理
             int starNum=starArray->count();
@@ -436,6 +361,8 @@ void HelloWorld::step()
     for (int n=ballNum-1; n>=0; n--) {
         MainBall *ball=(MainBall *)ballArray->objectAtIndex(n);
         if (ball->isUseless) {
+             ball->m_emitter->release();
+            ball->m_emitter->removeFromParent();
             ball->removeFromParent();
             ballArray->removeObject(ball);
         }
@@ -491,14 +418,21 @@ void HelloWorld::creatBall()
     //ball->assignmentProps(createMother_Son, this);
     this->addChild(ball);
     ballArray->addObject(ball);
+    CCParticleSun* m_emitter = CCParticleSun::createWithTotalParticles(60);
+    m_emitter->setPosition(ball->getPosition());
+    m_emitter->retain();
+  
+    m_emitter->setTexture( CCTextureCache::sharedTextureCache()->addImage("fire-grayscale.png") );
+    m_emitter->cocos2d::CCParticleSystem::setTotalParticles(0);
+    ball->m_emitter=m_emitter;
+      this-> addChild(m_emitter);
 
 }
 void HelloWorld::fireBall(MainBall *ball)
 {
-//    ball->speedX=3;
-//    ball->speedY=3;
+
     ball->speed=5;
-    ball->setSpeedAndRadian(0.8);
+    ball->setSpeedAndRadian(ball->speed,0.8);
     ball->isFire=true;
 }
 
@@ -607,14 +541,6 @@ void HelloWorld::getAllObstacle()
         for (int y =0; y<s.height; y++) {
             int gid=obstaclelayer->tileGIDAt(ccp(x, y));
             if (gid !=0) {
-                
-                
-                
-   
-                
-                
-                
-                
                 Obstacle *ob=new Obstacle;
                 ob->position=ccp(x, y);
                 int mapy= _tileMap->getMapSize().height-y;//从左下算起的点Y
@@ -670,7 +596,6 @@ void HelloWorld::getAllObstacle()
                         ob->HealthNum=hp->intValue();
                         
                     }
-                    
                     if (properties->valueForKey("type")) {
                         
                         CCString *type=(CCString *)properties->valueForKey("type");
@@ -685,9 +610,6 @@ void HelloWorld::getAllObstacle()
                         typeNum=random_propsType;
 
                     switch (typeNum) {
-                        case 0:
-                            ob->propsType=createMother_Son ;
-                            break;
                         case 1:
                             ob->propsType=createBrothers ;
                             break;
@@ -706,10 +628,9 @@ void HelloWorld::getAllObstacle()
                         case 6:
                             ob->propsType=gongzih_Speed_up ;
                             break;
-                        case 7:
-                            ob->propsType=gongzih_Speed_down ;
-                            break;
+
                         default:
+                             ob->propsType=gongzih_Speed_down ;
                             break;
                     }
                 }

@@ -22,29 +22,23 @@ public:
     CREATE_FUNC(MainBall);
     static MainBall *getBall();
     bool isFire;
-    float speedX,speedY;
-    float speed,ballradian;
     int bType;
     CCParticleSun* m_emitter ;
     
     
     //ACTION
-    void setSpeedAndRadian(float radian);
     void assignmentProps(PropsType pType,cocos2d::CCLayer *mainLayer);
-    cocos2d::CCArray *smallBallList;
     //***********
-    void ballAmother_son();
+ 
     void ballAbrothers(cocos2d::CCNode *mainLayer);
     void ballAsmall();
     void ballAstrong();
     void ballAfireball();
     void ballAspeed_up();
     //***********
-    void sportSmallBall();
-    int smalldetectWithRect(CCRect targetRect);
      int detectWithRect(CCRect targetRect,bool* collisionBool);
+    
     //**********
-     void MainBallstep();
    
 };
 #endif /* defined(__NycGame__MainBall__) */

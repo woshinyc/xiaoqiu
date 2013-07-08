@@ -29,12 +29,12 @@
  </layer>
  <layer name="propslayer" width="10" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBicgHGA7IThgXLDcAEACSwABg==
+   eJxjYBicgHGA7IThgXIDujuw4aEAAA7cAA4=
   </data>
  </layer>
  <layer name="obstaclelayer" width="10" height="15">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFMPAaiN8A8Vs0Nr3dgA9jcx8y+w0WOWQ+LkxtAABMQiEv
+   eJxjYBgFMPAaiN8A8Vs09iggHQAA97IFiQ==
   </data>
  </layer>
 </map>

@@ -280,7 +280,6 @@
 		DF0581B5178500D800190892 /* Props.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581B3178500D800190892 /* Props.cpp */; };
 		DF0581B8178500E300190892 /* Favorer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581B6178500E300190892 /* Favorer.cpp */; };
 		DF0581BD178500EE00190892 /* MainBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581B9178500EE00190892 /* MainBall.cpp */; };
-		DF0581BE178500EE00190892 /* SmallBall.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581BB178500EE00190892 /* SmallBall.cpp */; };
 		DF0581C3178500F900190892 /* SmallBox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581BF178500F900190892 /* SmallBox.cpp */; };
 		DF0581C4178500F900190892 /* BoxInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581C1178500F900190892 /* BoxInfo.cpp */; };
 		DF0581C71785015100190892 /* StarSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DF0581C51785015100190892 /* StarSprite.cpp */; };
@@ -875,8 +874,6 @@
 		DF0581B7178500E300190892 /* Favorer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favorer.h; sourceTree = "<group>"; };
 		DF0581B9178500EE00190892 /* MainBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainBall.cpp; sourceTree = "<group>"; };
 		DF0581BA178500EE00190892 /* MainBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainBall.h; sourceTree = "<group>"; };
-		DF0581BB178500EE00190892 /* SmallBall.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallBall.cpp; sourceTree = "<group>"; };
-		DF0581BC178500EE00190892 /* SmallBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallBall.h; sourceTree = "<group>"; };
 		DF0581BF178500F900190892 /* SmallBox.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SmallBox.cpp; sourceTree = "<group>"; };
 		DF0581C0178500F900190892 /* SmallBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallBox.h; sourceTree = "<group>"; };
 		DF0581C1178500F900190892 /* BoxInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoxInfo.cpp; sourceTree = "<group>"; };
@@ -2080,8 +2077,6 @@
 			children = (
 				DF0581B9178500EE00190892 /* MainBall.cpp */,
 				DF0581BA178500EE00190892 /* MainBall.h */,
-				DF0581BB178500EE00190892 /* SmallBall.cpp */,
-				DF0581BC178500EE00190892 /* SmallBall.h */,
 			);
 			name = "小球";
 			sourceTree = "<group>";
@@ -2447,7 +2442,6 @@
 				DF0581B5178500D800190892 /* Props.cpp in Sources */,
 				DF0581B8178500E300190892 /* Favorer.cpp in Sources */,
 				DF0581BD178500EE00190892 /* MainBall.cpp in Sources */,
-				DF0581BE178500EE00190892 /* SmallBall.cpp in Sources */,
 				DF0581C3178500F900190892 /* SmallBox.cpp in Sources */,
 				DF0581C4178500F900190892 /* BoxInfo.cpp in Sources */,
 				DF0581C71785015100190892 /* StarSprite.cpp in Sources */,
