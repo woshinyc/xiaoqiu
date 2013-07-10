@@ -451,9 +451,9 @@ void HelloWorld::ccTouchesMoved(CCSet *pTouches,CCEvent *pEvent)
     CCSetIterator iter = pTouches->begin();
      CCTouch *touch = (CCTouch *)(*iter);
     CCPoint touchLocation = touch->getLocationInView();
-     favorer->targetPoint=touchLocation;
+    
      touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
-  //  favorer->setPosition(ccp(touchLocation.x, 10));
+     favorer->targetPoint=touchLocation;
     int num=ballArray->count();
     for (int n=0;n<num;n++) {
         MainBall *ball=(MainBall *)ballArray->objectAtIndex(n);
@@ -468,8 +468,8 @@ void HelloWorld::ccTouchesEnded(CCSet *pTouches,CCEvent *pEvent)
     CCSetIterator iter = pTouches->begin();
     CCTouch *touch = (CCTouch *)(*iter);
     CCPoint touchLocation = touch->getLocationInView();
-    favorer->targetPoint=touchLocation;
     touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
+     favorer->targetPoint=touchLocation;
     if (fabsf(beganTouchLocation.x-touchLocation.x)<7) {
         int num=ballArray->count();
         this->test();

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>a.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>xiaoqiu.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>DF057E101784FEBB00190892</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF195975178BA13E0013A3D7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
